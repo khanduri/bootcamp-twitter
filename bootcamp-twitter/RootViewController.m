@@ -18,6 +18,5 @@
 {
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
     self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuViewController"];
-    
 }
 @end

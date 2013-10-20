@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		019EDEE01812F4D200551AA2 /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 019EDEDF1812F4D200551AA2 /* TwitterClient.m */; };
+		019EDEE31813030F00551AA2 /* tempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 019EDEE21813030F00551AA2 /* tempViewController.m */; };
+		019EDEE51813727500551AA2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019EDEE41813727500551AA2 /* Social.framework */; };
 		01DFE52A18104C5E00619DA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DFE52918104C5E00619DA5 /* Foundation.framework */; };
 		01DFE52C18104C5F00619DA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DFE52B18104C5F00619DA5 /* CoreGraphics.framework */; };
 		01DFE52E18104C5F00619DA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DFE52D18104C5F00619DA5 /* UIKit.framework */; };
@@ -39,6 +42,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		019EDEDE1812F4D200551AA2 /* TwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterClient.h; sourceTree = "<group>"; };
+		019EDEDF1812F4D200551AA2 /* TwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterClient.m; sourceTree = "<group>"; };
+		019EDEE11813030F00551AA2 /* tempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tempViewController.h; sourceTree = "<group>"; };
+		019EDEE21813030F00551AA2 /* tempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tempViewController.m; sourceTree = "<group>"; };
+		019EDEE41813727500551AA2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		01DFE52618104C5E00619DA5 /* bootcamp-twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bootcamp-twitter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01DFE52918104C5E00619DA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		01DFE52B18104C5F00619DA5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				019EDEE51813727500551AA2 /* Social.framework in Frameworks */,
 				01DFE52C18104C5F00619DA5 /* CoreGraphics.framework in Frameworks */,
 				01DFE52E18104C5F00619DA5 /* UIKit.framework in Frameworks */,
 				01DFE52A18104C5E00619DA5 /* Foundation.framework in Frameworks */,
@@ -95,6 +104,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		019EDEDD1812F48200551AA2 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				019EDEDE1812F4D200551AA2 /* TwitterClient.h */,
+				019EDEDF1812F4D200551AA2 /* TwitterClient.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		01DFE51D18104C5E00619DA5 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +136,7 @@
 		01DFE52818104C5E00619DA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				019EDEE41813727500551AA2 /* Social.framework */,
 				01DFE52918104C5E00619DA5 /* Foundation.framework */,
 				01DFE52B18104C5F00619DA5 /* CoreGraphics.framework */,
 				01DFE52D18104C5F00619DA5 /* UIKit.framework */,
@@ -130,6 +149,7 @@
 		01DFE52F18104C5F00619DA5 /* bootcamp-twitter */ = {
 			isa = PBXGroup;
 			children = (
+				019EDEDD1812F48200551AA2 /* API */,
 				01DFE55F1810C32800619DA5 /* Storyboard.storyboard */,
 				01DFE55B18104EBF00619DA5 /* View */,
 				01DFE55A18104EAC00619DA5 /* Tools */,
@@ -183,6 +203,8 @@
 				01DFE5681811CC2F00619DA5 /* MenuViewController.m */,
 				01DFE56A1811CE4700619DA5 /* ProfileViewController.h */,
 				01DFE56B1811CE4700619DA5 /* ProfileViewController.m */,
+				019EDEE11813030F00551AA2 /* tempViewController.h */,
+				019EDEE21813030F00551AA2 /* tempViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -345,6 +367,8 @@
 				01DFE53618104C5F00619DA5 /* main.m in Sources */,
 				01DFE5661811CBD500619DA5 /* RootViewController.m in Sources */,
 				01DFE55E18104ED900619DA5 /* TimelineViewController.m in Sources */,
+				019EDEE31813030F00551AA2 /* tempViewController.m in Sources */,
+				019EDEE01812F4D200551AA2 /* TwitterClient.m in Sources */,
 				01DFE56C1811CE4700619DA5 /* ProfileViewController.m in Sources */,
 				01DFE56F1811D31900619DA5 /* Constants.m in Sources */,
 				01DFE5691811CC2F00619DA5 /* MenuViewController.m in Sources */,

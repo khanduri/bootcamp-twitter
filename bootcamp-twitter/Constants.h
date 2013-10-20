@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Constants : NSObject
+#define kTWITTER_BASE_URL [NSURL URLWithString:@"https://api.twitter.com/"]
+#define kTWITTER_CONSUMER_KEY @"i2RnxdJ4CygGcukOrUREAQ"
+#define kTWITTER_CONSUMER_SECRET @"eeyeKeNOTvdlo6q8QOE1DYISOzmCWcOopMObCX8"
 
-@end
+static NSString * const kAccessTokenKey = @"kAccessTokenKey";
+
