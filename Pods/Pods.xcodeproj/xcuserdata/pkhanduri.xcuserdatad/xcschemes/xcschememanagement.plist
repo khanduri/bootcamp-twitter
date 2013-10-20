@@ -6,43 +6,43 @@
 	<dict>
 		<key>Pods-AFNetworking.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-AFOAuth1Client.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>Pods-JSONKit.xcscheme</key>
+		<key>Pods-RESideMenu.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0AD3DD02CE7F4AC78C1C2190</key>
+		<key>22538F251A2C44C090133EC6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29F2C18348BD4FDB9EC231F3</key>
+		<key>491D658D05A9469DAB3DEEDD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7B4C6B5553AA452B82E84AFA</key>
+		<key>8941262B2C8F4222A0DE8490</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C742C420BFF745D9BFCF8397</key>
+		<key>DA60346239B94C4F8EBF0392</key>
 		<dict>
 			<key>primary</key>
 			<true/>
