@@ -18,8 +18,12 @@
 + (TwitterClient *) instance;
 
 -(void) composeTweetInViewController: (UIViewController * ) viewController;
-    
+
 - (void)userTimelineWithCount:(int)count
+                      success:(void (^)(NSDictionary *data))success
+                      failure:(void (^)(NSError *error))failure;
+
+- (void)homeTimelineWithCount:(int)count
                       success:(void (^)(NSDictionary *data))success
                       failure:(void (^)(NSError *error))failure;
 

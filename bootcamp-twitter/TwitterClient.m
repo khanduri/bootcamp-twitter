@@ -76,54 +76,80 @@
     return [SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter];
 }
 
+- (void)homeTimelineWithCount:(int)count
+                      success:(void (^)(NSDictionary *data))success
+                      failure:(void (^)(NSError *error))failure{
+    NSURL * url = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/home_timeline.json"];
+    NSDictionary * params = @{
+                              @"count" : @(count)
+                              };
+    [self makeTwitterRequestAtURL:url withParams:params success:success failure:failure];
+}
+
 - (void)userTimelineWithCount:(int)count
                       success:(void (^)(NSDictionary * data))success
                       failure:(void (^)(NSError * error))failure
 {
+    NSURL * url = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/user_timeline.json"];
+    NSDictionary * params = @{
+                              @"count" : @(count)
+                              };
+    [self makeTwitterRequestAtURL:url withParams:params success:success failure:failure];
+
+}
+
+-(void) makeTwitterRequestAtURL: (NSURL * ) url
+                     withParams:(NSDictionary *) params
+                        success:(void (^)(NSDictionary * data))success
+                        failure:(void (^)(NSError * error))failure{
+    
     if ([self userHasAccessToTwitter]) {
         
         ACAccountType *twitterAccountType = [self.accountStore accountTypeWithAccountTypeIdentifier: ACAccountTypeIdentifierTwitter];
-
+        
         [self.accountStore requestAccessToAccountsWithType:twitterAccountType options:NULL completion:^(BOOL granted, NSError *error) {
-             if (granted) {
-                 NSArray *twitterAccounts = [self.accountStore accountsWithAccountType:twitterAccountType];
-                 ACAccount* userAccount = [twitterAccounts lastObject];
-
-                 NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/user_timeline.json"];
-                 NSDictionary *params = @{
-                        @"screen_name" : userAccount.username,
-                        @"count" : @(count)
-                 };
-                 SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:url parameters:params];
-                 [request setAccount:userAccount];
-
-                 [request performRequestWithHandler: ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                      
-                      if (responseData) {
-                          if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
-                              NSError * error;
-                              NSDictionary * data = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
-                              if (data) {
-                                  success(data);
-                              } else {
-                                  NSLog(@"JSON Error: %@", [error localizedDescription]);
-                                  failure(error);
-                              }
-                          } else {
-                              NSLog(@"The response status code is %d", urlResponse.statusCode);
-//                              failure(nserror);
-                          }
-                      } else {
-                          NSLog(@"The server did not respond ... Rate limited?");
-//                          failure(nserror);
-                      }
-                  }];
-             } else {
-                 // Access was not granted, or an error occurred
-                 NSLog(@"%@", [error localizedDescription]);
-//                 failure(nserror);
-             }
-         }];
+            if (granted) {
+                NSArray *twitterAccounts = [self.accountStore accountsWithAccountType:twitterAccountType];
+                ACAccount* userAccount = [twitterAccounts lastObject];
+                
+                NSDictionary * baseParams = @{
+                                              @"screen_name" : userAccount.username,
+                                              };
+                
+                NSMutableDictionary * reqParams = [[NSMutableDictionary alloc] initWithDictionary:params];
+                [reqParams addEntriesFromDictionary:baseParams];
+                
+                SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:url parameters:[reqParams mutableCopy]];
+                [request setAccount:userAccount];
+                
+                [request performRequestWithHandler: ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                    
+                    if (responseData) {
+                        if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
+                            NSError * error;
+                            NSDictionary * data = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
+                            if (data) {
+                                success(data);
+                                //NSLog(@"data : %@", data);
+                            } else {
+                                NSLog(@"JSON Error: %@", [error localizedDescription]);
+                                failure(error);
+                            }
+                        } else {
+                            NSLog(@"The response status code is %d", urlResponse.statusCode);
+                            //                              failure(nserror);
+                        }
+                    } else {
+                        NSLog(@"The server did not respond ... Rate limited?");
+                        //                          failure(nserror);
+                    }
+                }];
+            } else {
+                // Access was not granted, or an error occurred
+                NSLog(@"%@", [error localizedDescription]);
+                //                 failure(nserror);
+            }
+        }];
     }
 }
 

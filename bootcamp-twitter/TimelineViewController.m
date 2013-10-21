@@ -41,11 +41,10 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [[TwitterClient instance] userTimelineWithCount:20 success:^(NSDictionary * data){
+    [[TwitterClient instance] homeTimelineWithCount:20 success:^(NSDictionary * data){
         
         self.tweets = [Tweet tweetsFromDataDict:data];
         [self.tableView reloadData];
-        NSLog(@"data : %@", data);
         
     } failure:^(NSError * error) {
         NSLog(@"Error:  %@", [error localizedDescription]);
@@ -96,7 +95,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 85;
+    return 70;
 }
 
 
