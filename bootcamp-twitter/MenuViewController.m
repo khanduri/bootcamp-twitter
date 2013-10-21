@@ -59,7 +59,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCellID" forIndexPath:indexPath];
         
-    NSArray *titles = @[@"TimeLine", @"Me"];
+    NSArray *titles = @[@"Home", @"My Profile"];
     cell.textLabel.text = titles[indexPath.row];
     
     return cell;

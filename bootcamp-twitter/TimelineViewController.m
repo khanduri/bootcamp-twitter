@@ -10,6 +10,7 @@
 #import "TwitterClient.h"
 #import "Tweet.h"
 #import "TweetCell.h"
+#import "TweetDetailViewController.h"
 
 @interface TimelineViewController ()
 - (IBAction)showMenu:(id)sender;
@@ -97,6 +98,17 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 70;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TweetDetailViewController * tweetDetailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"tweetDetailViewController"];
+    
+    [tweetDetailVC setTweet:self.tweets[indexPath.row]];
+    
+    [[self navigationController] pushViewController:tweetDetailVC animated:YES];
+    
+}
+
 
 
 @end

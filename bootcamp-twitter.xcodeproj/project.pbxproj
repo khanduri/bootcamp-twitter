@@ -12,6 +12,7 @@
 		019EDEE818145F8500551AA2 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 019EDEE718145F8500551AA2 /* Tweet.m */; };
 		019EDEEB1814D94500551AA2 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 019EDEEA1814D94500551AA2 /* TweetCell.m */; };
 		019EDEED1814D95D00551AA2 /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 019EDEEC1814D95D00551AA2 /* TweetCell.xib */; };
+		019EDEF018157A4000551AA2 /* TweetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 019EDEEF18157A4000551AA2 /* TweetDetailViewController.m */; };
 		01DFE52A18104C5E00619DA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DFE52918104C5E00619DA5 /* Foundation.framework */; };
 		01DFE52C18104C5F00619DA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DFE52B18104C5F00619DA5 /* CoreGraphics.framework */; };
 		01DFE52E18104C5F00619DA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DFE52D18104C5F00619DA5 /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 		019EDEE91814D94500551AA2 /* TweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
 		019EDEEA1814D94500551AA2 /* TweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
 		019EDEEC1814D95D00551AA2 /* TweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
+		019EDEEE18157A4000551AA2 /* TweetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetDetailViewController.h; sourceTree = "<group>"; };
+		019EDEEF18157A4000551AA2 /* TweetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetDetailViewController.m; sourceTree = "<group>"; };
 		01DFE52618104C5E00619DA5 /* bootcamp-twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bootcamp-twitter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01DFE52918104C5E00619DA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		01DFE52B18104C5F00619DA5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -208,6 +211,8 @@
 				01DFE5681811CC2F00619DA5 /* MenuViewController.m */,
 				01DFE56A1811CE4700619DA5 /* ProfileViewController.h */,
 				01DFE56B1811CE4700619DA5 /* ProfileViewController.m */,
+				019EDEEE18157A4000551AA2 /* TweetDetailViewController.h */,
+				019EDEEF18157A4000551AA2 /* TweetDetailViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 				019EDEE01812F4D200551AA2 /* TwitterClient.m in Sources */,
 				01DFE56C1811CE4700619DA5 /* ProfileViewController.m in Sources */,
 				019EDEE818145F8500551AA2 /* Tweet.m in Sources */,
+				019EDEF018157A4000551AA2 /* TweetDetailViewController.m in Sources */,
 				01DFE56F1811D31900619DA5 /* Constants.m in Sources */,
 				01DFE5691811CC2F00619DA5 /* MenuViewController.m in Sources */,
 			);
