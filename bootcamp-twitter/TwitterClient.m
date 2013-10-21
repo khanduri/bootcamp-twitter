@@ -154,6 +154,10 @@
 }
 
 -(void) composeTweetInViewController: (UIViewController * ) viewController {
+    [self composeTweetInViewController:viewController withReplyTo:nil];
+}
+
+-(void) composeTweetInViewController: (UIViewController * ) viewController withReplyTo:(NSString *) screenname {
     if ([self userHasAccessToTwitter]) {
         // Initialize Tweet Compose View Controller
         SLComposeViewController *vc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
@@ -161,6 +165,10 @@
         [vc setCompletionHandler:^(SLComposeViewControllerResult result) {
             [viewController dismissViewControllerAnimated:YES completion:nil];
         }];
+        
+        if (screenname != nil){
+            [vc setInitialText:[NSString stringWithFormat:@"@%@", screenname]];
+        }
         
         // Display Tweet Compose View Controller Modally
         [viewController presentViewController:vc animated:YES completion:nil];
@@ -174,7 +182,6 @@
         [alertView show];
     }
 }
-
 
 
 @end

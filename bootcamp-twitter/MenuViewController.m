@@ -10,6 +10,8 @@
 
 @interface MenuViewController ()
 
+@property (strong, nonatomic) NSArray * menuItems;
+
 @end
 
 @implementation MenuViewController
@@ -29,6 +31,8 @@
 	// Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    self.menuItems = @[@"Home", @"Me", @"Followers"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,7 +52,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 2;
+    return self.menuItems.count;
 }
 
 ////////////////////////////////////////
@@ -59,8 +63,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCellID" forIndexPath:indexPath];
         
-    NSArray *titles = @[@"Home", @"My Profile"];
-    cell.textLabel.text = titles[indexPath.row];
+    cell.textLabel.text = self.menuItems[indexPath.row];
     
     return cell;
 }

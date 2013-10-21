@@ -19,6 +19,9 @@
 
 -(void) composeTweetInViewController: (UIViewController * ) viewController;
 
+-(void) composeTweetInViewController: (UIViewController * ) viewController
+                         withReplyTo:(NSString * ) screenname;
+
 - (void)userTimelineWithCount:(int)count
                       success:(void (^)(NSDictionary *data))success
                       failure:(void (^)(NSError *error))failure;

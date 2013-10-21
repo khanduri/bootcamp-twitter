@@ -7,9 +7,16 @@
 //
 
 #import "TweetDetailViewController.h"
+#import "TwitterClient.h"
 
 @interface TweetDetailViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *tweetText;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+
+- (IBAction)replyOnTweet:(id)sender;
+- (IBAction)retweetOnTweet:(id)sender;
+- (IBAction)favoriteOnTweet:(id)sender;
 
 @end
 
@@ -37,4 +44,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)replyOnTweet:(id)sender {
+    [[TwitterClient instance] composeTweetInViewController: self withReplyTo: self.tweet.screenname];
+}
+
+- (IBAction)retweetOnTweet:(id)sender {
+}
+
+- (IBAction)favoriteOnTweet:(id)sender {
+}
 @end
