@@ -88,6 +88,11 @@
                                 <action selector="showMenu:" destination="eFf-nT-DVL" id="P14-CW-nGi"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="kJP-gL-BxR">
+                            <connections>
+                                <action selector="compose:" destination="eFf-nT-DVL" id="2QZ-Rg-USX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="9FX-U6-dlW" id="jrq-SC-BPH"/>
@@ -168,6 +173,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="BcU-bf-mAb">
                             <connections>
                                 <action selector="showMenu:" destination="73O-D0-opE" id="vRN-AL-UiS"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="C69-tO-t9W">
+                            <connections>
+                                <action selector="compose:" destination="73O-D0-opE" id="Dea-YF-Dlz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

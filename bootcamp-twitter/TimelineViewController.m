@@ -12,6 +12,7 @@
 
 @interface TimelineViewController ()
 - (IBAction)showMenu:(id)sender;
+- (IBAction)compose:(id)sender;
 
 @property (strong, nonatomic) NSArray * tweets;
 
@@ -55,6 +56,10 @@
 
 - (IBAction)showMenu:(id)sender {
     [self.sideMenuViewController presentMenuViewController];
+}
+
+- (IBAction)compose:(id)sender {
+    [[TwitterClient instance] composeTweetInViewController: self];
 }
 
 ////////////////////////////////////////

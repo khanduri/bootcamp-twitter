@@ -7,9 +7,11 @@
 //
 
 #import "ProfileViewController.h"
+#import "TwitterClient.h"
 
 @interface ProfileViewController ()
 - (IBAction)showMenu:(id)sender;
+- (IBAction)compose:(id)sender;
 
 @end
 
@@ -38,5 +40,9 @@
 
 - (IBAction)showMenu:(id)sender {
     [self.sideMenuViewController presentMenuViewController];
+}
+
+- (IBAction)compose:(id)sender {
+    [[TwitterClient instance] composeTweetInViewController: self];
 }
 @end
