@@ -8,6 +8,7 @@
 
 #import "TimelineViewController.h"
 #import "TwitterClient.h"
+#import "Tweet.h"
 
 @interface TimelineViewController ()
 - (IBAction)showMenu:(id)sender;
@@ -35,13 +36,13 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    // TODO : remove this
-    self.tweets = @[@"Tweet 1", @"Tweet 2"];
-    
     [[TwitterClient instance] userTimelineWithCount:20 success:^(NSDictionary * data){
-        NSLog(@"YEEEEeeeewesfskjdfahkjsdhfsdhaf: %@\n", data);
+        
+        self.tweets = [Tweet tweetsFromDataDict:data];
+        [self.tableView reloadData];
+        
     } failure:^(NSError * error) {
-        NSLog(@"uududshfhjafdjfksdafds Error: %@", [error localizedDescription]);
+        NSLog(@"Error:  %@", [error localizedDescription]);
     }];
 
 }
@@ -75,7 +76,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TimeLineCellID" forIndexPath:indexPath];
     
-    cell.textLabel.text = self.tweets[indexPath.row];
+    Tweet * currentTweet = (Tweet * ) self.tweets[indexPath.row];
+    cell.textLabel.text = currentTweet.text;
     
     return cell;
 }
