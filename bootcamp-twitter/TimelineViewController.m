@@ -9,6 +9,7 @@
 #import "TimelineViewController.h"
 #import "TwitterClient.h"
 #import "Tweet.h"
+#import "TweetCell.h"
 
 @interface TimelineViewController ()
 - (IBAction)showMenu:(id)sender;
@@ -34,6 +35,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    UINib * tweetNib = [UINib nibWithNibName:@"TweetCell" bundle:nil];
+    [self.tableView registerNib:tweetNib forCellReuseIdentifier:@"TweetCellID"];
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -41,6 +45,7 @@
         
         self.tweets = [Tweet tweetsFromDataDict:data];
         [self.tableView reloadData];
+        NSLog(@"data : %@", data);
         
     } failure:^(NSError * error) {
         NSLog(@"Error:  %@", [error localizedDescription]);
@@ -79,12 +84,20 @@
 ////////////////////////////////////////
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TimeLineCellID" forIndexPath:indexPath];
+    TweetCell * cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCellID"];
     
-    Tweet * currentTweet = (Tweet * ) self.tweets[indexPath.row];
-    cell.textLabel.text = currentTweet.text;
+    if (cell==nil) {
+        cell = [[TweetCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"TweetCellID"];
+    }
+    
+    cell.tweet = (Tweet * ) self.tweets[indexPath.row];
     
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 85;
+}
+
 
 @end

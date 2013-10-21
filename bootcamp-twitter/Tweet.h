@@ -11,6 +11,9 @@
 @interface Tweet : NSObject
 
 @property (nonatomic, strong) NSString * text;
+@property (nonatomic, strong) NSString * timestamp;
+@property (nonatomic, strong) NSString * username;
+@property (nonatomic, strong) UIImage * profileImage;
 
 + (NSArray *)tweetsFromDataDict:(NSDictionary *) dataObject;
 + (Tweet *)tweetFromObjectDict:(NSDictionary *) tweetObject;
