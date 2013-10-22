@@ -31,7 +31,11 @@
                       failure:(void (^)(NSError *error))failure;
 
 -(void)retweetTweet:(Tweet * ) tweet
-              success:(void (^)(NSDictionary *data))success
-              failure:(void (^)(NSError *error))failure;
+            success:(void (^)(NSDictionary *data))success
+            failure:(void (^)(NSError *error))failure;
+
+-(void)favoriteTweet:(Tweet * ) tweet
+            success:(void (^)(NSDictionary *data))success
+            failure:(void (^)(NSError *error))failure;
 
 @end

@@ -97,7 +97,6 @@
                               };
     
     [self makeTwitterRequestAtURL:url withParams:params requestType:SLRequestMethodGET success:success failure:failure];
-
 }
 
 -(void)retweetTweet:(Tweet * ) tweet
@@ -106,8 +105,19 @@
 
     NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/retweet/%@.json", tweet.tweetId]];
     [self makeTwitterRequestAtURL:url withParams:nil requestType:SLRequestMethodPOST success:success failure:failure];
-    
 }
+
+-(void)favoriteTweet:(Tweet * ) tweet
+             success:(void (^)(NSDictionary *data))success
+             failure:(void (^)(NSError *error))failure{
+    NSURL * url = [NSURL URLWithString:@"https://api.twitter.com/1.1/favorites/create.json"];
+    NSDictionary * params = @{
+                              @"id" : tweet.tweetId
+                              };
+    
+    [self makeTwitterRequestAtURL:url withParams:params requestType:SLRequestMethodPOST success:success failure:failure];
+}
+
 
 
 -(void) makeTwitterRequestAtURL: (NSURL * ) url

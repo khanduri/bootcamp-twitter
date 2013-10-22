@@ -59,5 +59,11 @@
 }
 
 - (IBAction)favoriteOnTweet:(id)sender {
+    [[TwitterClient instance] favoriteTweet:self.tweet success:^(NSDictionary * data){
+        [[[UIAlertView alloc] initWithTitle:@"Favorite" message:@"Favorited Successfully" delegate:nil cancelButtonTitle:@"Done" otherButtonTitles: nil] show];
+    } failure:^(NSError * error){
+        [[[UIAlertView alloc] initWithTitle:@"Favorite" message:@"Favorite attempt failed! Please make sure you have connectivity and retry again." delegate:nil cancelButtonTitle:@"Ok!" otherButtonTitles: nil] show];
+    }];
 }
+
 @end
