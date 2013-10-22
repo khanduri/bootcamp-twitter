@@ -96,8 +96,16 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+//    TweetCell * cell = (TweetCell * )[self.tableView cellForRowAtIndexPath:indexPath];
+//    CGSize tweetLabel = [cell.tweetText.text sizeWithFont:cell.tweetText.font forWidth:80.0f lineBreakMode:NSLineBreakByWordWrapping];
+//    return tweetLabel.height + 20;
+    
     return 70;
+    
 }
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

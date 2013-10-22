@@ -49,6 +49,13 @@
 }
 
 - (IBAction)retweetOnTweet:(id)sender {
+    
+    [[TwitterClient instance] retweetTweetId:self.tweet.tweetId success:^(NSDictionary * data){
+        [[[UIAlertView alloc] initWithTitle:@"Retweet" message:@"Retweeted Successfully" delegate:nil cancelButtonTitle:@"Ok!" otherButtonTitles: nil] show];
+    } failure:^(NSError * error){
+        [[[UIAlertView alloc] initWithTitle:@"Retweet" message:@"Retweet attempt failed! Please make sure you have connectivity and retry again." delegate:nil cancelButtonTitle:@"Done" otherButtonTitles: nil] show];
+    }];
+    
 }
 
 - (IBAction)favoriteOnTweet:(id)sender {

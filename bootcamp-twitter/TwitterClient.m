@@ -83,7 +83,8 @@
     NSDictionary * params = @{
                               @"count" : @(count)
                               };
-    [self makeTwitterRequestAtURL:url withParams:params success:success failure:failure];
+    
+    [self makeTwitterRequestAtURL:url withParams:params requestType:SLRequestMethodGET success:success failure:failure];
 }
 
 - (void)userTimelineWithCount:(int)count
@@ -94,12 +95,26 @@
     NSDictionary * params = @{
                               @"count" : @(count)
                               };
-    [self makeTwitterRequestAtURL:url withParams:params success:success failure:failure];
+    
+    [self makeTwitterRequestAtURL:url withParams:params requestType:SLRequestMethodGET success:success failure:failure];
 
 }
 
+-(void)retweetTweetId:(int) tweetId
+              success:(void (^)(NSDictionary *data))success
+              failure:(void (^)(NSError *error))failure{
+
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/retweet/%@.json", @(392448641346318336)]];
+//    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/retweet/241259202004267009.json"]];
+    
+    [self makeTwitterRequestAtURL:url withParams:nil requestType:SLRequestMethodPOST success:success failure:failure];
+    
+}
+
+
 -(void) makeTwitterRequestAtURL: (NSURL * ) url
                      withParams:(NSDictionary *) params
+                    requestType: (SLRequestMethod) requestType
                         success:(void (^)(NSDictionary * data))success
                         failure:(void (^)(NSError * error))failure{
     
@@ -119,7 +134,7 @@
                 NSMutableDictionary * reqParams = [[NSMutableDictionary alloc] initWithDictionary:params];
                 [reqParams addEntriesFromDictionary:baseParams];
                 
-                SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:url parameters:[reqParams mutableCopy]];
+                SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:requestType URL:url parameters:[reqParams mutableCopy]];
                 [request setAccount:userAccount];
                 
                 [request performRequestWithHandler: ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
@@ -137,17 +152,17 @@
                             }
                         } else {
                             NSLog(@"The response status code is %d", urlResponse.statusCode);
-                            //                              failure(nserror);
+                            failure(error);
                         }
                     } else {
                         NSLog(@"The server did not respond ... Rate limited?");
-                        //                          failure(nserror);
+                        failure(error);
                     }
                 }];
             } else {
                 // Access was not granted, or an error occurred
                 NSLog(@"%@", [error localizedDescription]);
-                //                 failure(nserror);
+                failure(error);
             }
         }];
     }

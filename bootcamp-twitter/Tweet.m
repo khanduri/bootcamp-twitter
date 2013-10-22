@@ -35,7 +35,16 @@
     
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [userData objectForKey:@"profile_image_url"]]];
     tweet.profileImage = [UIImage imageWithData: imageData];
-
+    
+    UIImageView * temp = [[UIImageView alloc] init];
+    [temp setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: [userData objectForKey:@"profile_image_url"]]] placeholderImage:nil success:^(NSURLRequest * request, NSHTTPURLResponse * response, UIImage * image){
+        
+        tweet.profileImage = image;
+    } failure:^(NSURLRequest * request, NSHTTPURLResponse * response, NSError * error){
+        NSLog(@"Unable to fetch the twitter image! ERROR: %@", [error localizedDescription]);
+    }];
+    
+    
     return tweet;
 }
 

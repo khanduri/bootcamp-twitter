@@ -7,7 +7,6 @@
 //
 
 #import "Constants.h"
-#import "AFOAuth1Client.h"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 #import <Twitter/Twitter.h>
@@ -29,5 +28,9 @@
 - (void)homeTimelineWithCount:(int)count
                       success:(void (^)(NSDictionary *data))success
                       failure:(void (^)(NSError *error))failure;
+
+-(void)retweetTweetId:(int) tweetId
+              success:(void (^)(NSDictionary *data))success
+              failure:(void (^)(NSError *error))failure;
 
 @end
