@@ -51,18 +51,30 @@
 - (IBAction)retweetOnTweet:(id)sender {
     
     [[TwitterClient instance] retweetTweet:self.tweet success:^(NSDictionary * data){
-        [[[UIAlertView alloc] initWithTitle:@"Retweet" message:@"Retweeted Successfully" delegate:nil cancelButtonTitle:@"Done" otherButtonTitles: nil] show];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Retweet" message:@"Retweeted Successfully" delegate:nil cancelButtonTitle:@"Done" otherButtonTitles: nil];
+        
+        [self performSelectorOnMainThread:@selector(showAlert:) withObject:alert waitUntilDone:NO];
+        
     } failure:^(NSError * error){
-        [[[UIAlertView alloc] initWithTitle:@"Retweet" message:@"Retweet attempt failed! Please make sure you have connectivity and retry again." delegate:nil cancelButtonTitle:@"Ok!" otherButtonTitles: nil] show];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Retweet" message:@"Retweet attempt failed! Please make sure you have connectivity and retry again." delegate:nil cancelButtonTitle:@"Ok!" otherButtonTitles: nil];
+        
+        [self performSelectorOnMainThread:@selector(showAlert:) withObject:alert waitUntilDone:NO];
     }];
-    
+}
+
+-(void)showAlert: (UIAlertView * ) alert{
+    [alert show];
 }
 
 - (IBAction)favoriteOnTweet:(id)sender {
     [[TwitterClient instance] favoriteTweet:self.tweet success:^(NSDictionary * data){
-        [[[UIAlertView alloc] initWithTitle:@"Favorite" message:@"Favorited Successfully" delegate:nil cancelButtonTitle:@"Done" otherButtonTitles: nil] show];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Favorite" message:@"Favorited Successfully" delegate:nil cancelButtonTitle:@"Done" otherButtonTitles: nil];
+        
+        [self performSelectorOnMainThread:@selector(showAlert:) withObject:alert waitUntilDone:NO];
     } failure:^(NSError * error){
-        [[[UIAlertView alloc] initWithTitle:@"Favorite" message:@"Favorite attempt failed! Please make sure you have connectivity and retry again." delegate:nil cancelButtonTitle:@"Ok!" otherButtonTitles: nil] show];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Favorite" message:@"Favorite attempt failed! Please make sure you have connectivity and retry again." delegate:nil cancelButtonTitle:@"Ok!" otherButtonTitles: nil];
+        
+        [self performSelectorOnMainThread:@selector(showAlert:) withObject:alert waitUntilDone:NO];
     }];
 }
 

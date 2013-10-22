@@ -45,7 +45,8 @@
     [[TwitterClient instance] homeTimelineWithCount:20 success:^(NSDictionary * data){
         
         self.tweets = [Tweet tweetsFromDataDict:data];
-        [self.tableView reloadData];
+
+        [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
         
     } failure:^(NSError * error) {
         NSLog(@"Error:  %@", [error localizedDescription]);
