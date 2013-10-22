@@ -10,6 +10,7 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 #import <Twitter/Twitter.h>
+#import "Tweet.h"
 
 
 @interface TwitterClient : NSObject
@@ -29,7 +30,7 @@
                       success:(void (^)(NSDictionary *data))success
                       failure:(void (^)(NSError *error))failure;
 
--(void)retweetTweetId:(int) tweetId
+-(void)retweetTweet:(Tweet * ) tweet
               success:(void (^)(NSDictionary *data))success
               failure:(void (^)(NSError *error))failure;
 

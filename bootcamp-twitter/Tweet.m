@@ -24,7 +24,7 @@
 + (Tweet *)tweetFromObjectDict:(NSDictionary *)tweetObject {
     Tweet * tweet = [[Tweet alloc] init];
     
-    tweet.tweetId = (int)[tweetObject objectForKey:@"id"];
+    tweet.tweetId = [tweetObject objectForKey:@"id_str"];
     tweet.text = (NSString * )[tweetObject objectForKey:@"text"];
     tweet.timestamp = (NSString * )[tweetObject objectForKey:@"created_at"];
     

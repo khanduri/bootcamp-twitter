@@ -100,13 +100,11 @@
 
 }
 
--(void)retweetTweetId:(int) tweetId
-              success:(void (^)(NSDictionary *data))success
-              failure:(void (^)(NSError *error))failure{
+-(void)retweetTweet:(Tweet * ) tweet
+            success:(void (^)(NSDictionary *data))success
+            failure:(void (^)(NSError *error))failure{
 
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/retweet/%@.json", @(392448641346318336)]];
-//    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/retweet/241259202004267009.json"]];
-    
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/retweet/%@.json", tweet.tweetId]];
     [self makeTwitterRequestAtURL:url withParams:nil requestType:SLRequestMethodPOST success:success failure:failure];
     
 }
