@@ -13,6 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *tweetText;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *screenname;
 
 - (IBAction)replyOnTweet:(id)sender;
 - (IBAction)retweetOnTweet:(id)sender;
@@ -36,6 +38,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.tweetText.text = self.tweet.text;
+    [self.tweetText sizeToFit];
+    
+    self.profileImage.image = self.tweet.profileImage;
+    self.screenname.text = self.tweet.screenname;
+    self.username.text = self.tweet.username;
+
 }
 
 - (void)didReceiveMemoryWarning
