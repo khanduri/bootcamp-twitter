@@ -51,6 +51,11 @@
     } failure:^(NSError * error) {
         NSLog(@"Error:  %@", [error localizedDescription]);
     }];
+    
+    UIImage *image = [UIImage imageNamed: @"Icon-Small-50.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
+    
+    self.navigationItem.titleView = imageView;
 
 }
 
@@ -98,12 +103,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    TweetCell * cell = (TweetCell * )[self.tableView cellForRowAtIndexPath:indexPath];
-//    CGSize tweetLabel = [cell.tweetText.text sizeWithFont:cell.tweetText.font forWidth:80.0f lineBreakMode:NSLineBreakByWordWrapping];
-//    return tweetLabel.height + 20;
+    Tweet *tweet = self.tweets[indexPath.item];
     
-    return 70;
+    CGRect rect = [tweet.text boundingRectWithSize:CGSizeMake(230, 10000) options:NSStringDrawingUsesLineFragmentOrigin attributes:nil context:nil];
     
+    return rect.size.height + 40;
 }
 
 
